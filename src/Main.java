@@ -58,4 +58,19 @@ public class Main  {
         scanner.close();
     }
 
+    static void printMainMenu() {
+        System.out.println("\n========== MAIN MENU ==========");
+        System.out.println("1. Add Student");
+        System.out.println("2. Search Student by ID");
+        System.out.println("3. Update Student Information");
+        System.out.println("4. Delete Student");
+        System.out.println("5. Display All Students");
+        System.out.println("6. Generate Report");
+        System.out.println("7. Backup Student Records");
+        System.out.println("8. Show File Properties");
+        System.out.println("9. Exit");
+        System.out.println("================================");
+        System.out.print("Enter your choice: ");
+    }
+
 }

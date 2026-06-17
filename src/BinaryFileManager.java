@@ -84,6 +84,29 @@ public class BinaryFileManager {
         return null;
     }
 
+    public static void updateStudent(String id, String newName, String newDept, double newGpa) {
+        ArrayList<Student> list = loadAllStudents();
+        boolean found = false;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).studentID.equals(id)) {
+                list.get(i).name       = newName;
+                list.get(i).department = newDept;
+                list.get(i).gpa        = newGpa;
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            saveAllStudents(list);
+            System.out.println("Student updated successfully (Binary File).");
+        } else {
+            System.out.println("Student not found with ID: " + id);
+        }
+    }
+
+
 
 
 

@@ -88,4 +88,44 @@ public class Main  {
             return 1;
         }
     }
+
+    static void menuAddStudent(Scanner scanner) {
+        System.out.println("\n--- Add New Student ---");
+
+        try {
+            System.out.print("Enter Student ID   : ");
+            String id   = scanner.nextLine().trim();
+
+            System.out.print("Enter Name         : ");
+            String name = scanner.nextLine().trim();
+
+            System.out.print("Enter Department   : ");
+            String dept = scanner.nextLine().trim();
+
+            System.out.print("Enter GPA (0.0-4.0): ");
+            double gpa  = Double.parseDouble(scanner.nextLine().trim());
+
+            if (gpa < 0.0 || gpa > 4.0) {
+                System.out.println("GPA must be between 0.0 and 4.0.");
+                return;
+            }
+
+            Student newStudent = new Student(id, name, dept, gpa);
+
+            int fileType = askFileType(scanner);
+
+            if (fileType == 1) {
+                TextFileManager.addStudent(newStudent);
+            } else if (fileType == 2) {
+                BinaryFileManager.addStudent(newStudent);
+            } else if (fileType == 3) {
+                ObjectFileManager.addStudent(newStudent);
+            } else {
+                System.out.println("Invalid file type.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error adding student: " + e.getMessage());
+        }
+    }
 }

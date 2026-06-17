@@ -12,6 +12,13 @@ public class Student implements Serializable {
         this.department = department;
         this.gpa = gpa;
     }
-
+    public void displayStudent() {
+        System.out.println("-----------------------------");
+        System.out.println("ID         : " + studentID);
+        System.out.println("Name       : " + name);
+        System.out.println("Department : " + department);
+        System.out.println("GPA        : " + gpa);
+        System.out.println("-----------------------------");
+    }
 
 }

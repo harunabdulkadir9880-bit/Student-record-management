@@ -38,4 +38,24 @@ public class TextFileManager {
         return list;
     }
 
+    public static void saveAllStudents(ArrayList<Student> list) {
+        try {
+
+            PrintWriter writer = new PrintWriter(new FileWriter(FileHelper.textFile, false));
+
+            for (int i = 0; i < list.size(); i++) {
+                Student s = list.get(i);
+                writer.println(s.studentID);
+                writer.println(s.name);
+                writer.println(s.department);
+                writer.println(s.gpa);
+            }
+
+            writer.close();
+
+        } catch (Exception e) {
+            System.out.println("Error saving to text file: " + e.getMessage());
+        }
+    }
+
 }

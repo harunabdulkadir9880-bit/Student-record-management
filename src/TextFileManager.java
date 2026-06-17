@@ -37,5 +37,75 @@ public class TextFileManager {
 
         return list;
     }
+    public static void saveAllStudents(ArrayList<Student> list) {
+        try {
+
+            PrintWriter writer = new PrintWriter(new FileWriter(FileHelper.textFile, false));
+
+            for (int i = 0; i < list.size(); i++) {
+                Student s = list.get(i);
+                writer.println(s.studentID);
+                writer.println(s.name);
+                writer.println(s.department);
+                writer.println(s.gpa);
+            }
+
+            writer.close();
+
+        } catch (Exception e) {
+            System.out.println("Error saving to text file: " + e.getMessage());
+        }
+    }
+
+    public static void addStudent(Student newStudent) {
+        ArrayList<Student> list = loadAllStudents();
+
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).studentID.equals(newStudent.studentID)) {
+                System.out.println("A student with this ID already exists!");
+                return;
+            }
+        }
+
+        list.add(newStudent);
+        saveAllStudents(list);
+        System.out.println("Student added successfully (Text File).");
+    }
+
+    public static Student searchStudent(String id) {
+        ArrayList<Student> list = loadAllStudents();
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).studentID.equals(id)) {
+                return list.get(i);
+            }
+        }
+
+        return null;
+    }
+
+    public static void updateStudent(String id, String newName, String newDept, double newGpa) {
+        ArrayList<Student> list = loadAllStudents();
+        boolean found = false;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).studentID.equals(id)) {
+                list.get(i).name       = newName;
+                list.get(i).department = newDept;
+                list.get(i).gpa        = newGpa;
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            saveAllStudents(list);
+            System.out.println("Student updated successfully (Text File).");
+        } else {
+            System.out.println("Student not found with ID: " + id);
+        }
+    }
+
 
 }

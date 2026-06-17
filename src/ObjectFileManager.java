@@ -31,6 +31,20 @@ public class ObjectFileManager{
         return list;
     }
 
+    public static void saveAllStudents(ArrayList<Student> list) {
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FileHelper.objectFile, false));
+
+
+            oos.writeObject(list);
+
+            oos.close();
+
+        } catch (Exception e) {
+            System.out.println("Error saving to object file: " + e.getMessage());
+        }
+    }
 
 
 

@@ -127,4 +127,18 @@ public class TextFileManager {
             System.out.println("Student not found with ID: " + id);
         }
     }
+
+    public static void displayAllStudents() {
+        ArrayList<Student> list = loadAllStudents();
+
+        if (list.size() == 0) {
+            System.out.println("No students found in text file.");
+            return;
+        }
+
+        System.out.println("\n===== All Students (Text File) =====");
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).displayStudent();
+        }
+    }
 }

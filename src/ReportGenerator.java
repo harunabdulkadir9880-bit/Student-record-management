@@ -1,2 +1,4 @@
-public class ReportGenerator {
+import java.util.ArrayList;
+public class ReportGenerator{
+
 }

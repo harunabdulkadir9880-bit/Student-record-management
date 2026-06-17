@@ -73,4 +73,19 @@ public class Main  {
         System.out.print("Enter your choice: ");
     }
 
+    static int askFileType(Scanner scanner) {
+        System.out.println("\nChoose storage type:");
+        System.out.println("1. Text File");
+        System.out.println("2. Binary File");
+        System.out.println("3. Object File (Serialization)");
+        System.out.print("Enter choice: ");
+
+        try {
+            int type = Integer.parseInt(scanner.nextLine().trim());
+            return type;
+        } catch (Exception e) {
+            System.out.println("Invalid input. Defaulting to text file.");
+            return 1;
+        }
+    }
 }

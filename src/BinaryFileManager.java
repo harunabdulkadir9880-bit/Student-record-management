@@ -36,4 +36,24 @@ public class BinaryFileManager {
 
         return list;
     }
+
+    public static void saveAllStudents(ArrayList<Student> list) {
+        try {
+
+            DataOutputStream dos = new DataOutputStream(new FileOutputStream(FileHelper.binaryFile, false));
+
+            for (int i = 0; i < list.size(); i++) {
+                Student s = list.get(i);
+                dos.writeUTF(s.studentID);
+                dos.writeUTF(s.name);
+                dos.writeUTF(s.department);
+                dos.writeDouble(s.gpa);
+            }
+
+            dos.close();
+
+        } catch (Exception e) {
+            System.out.println("Error saving to binary file: " + e.getMessage());
+        }
+    }
 }

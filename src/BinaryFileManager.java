@@ -72,4 +72,21 @@ public class BinaryFileManager {
         saveAllStudents(list);
         System.out.println("Student added successfully (Binary File).");
     }
+    public static Student searchStudent(String id) {
+        ArrayList<Student> list = loadAllStudents();
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).studentID.equals(id)) {
+                return list.get(i);
+            }
+        }
+
+        return null;
+    }
+
+
+
+
+
+
 }

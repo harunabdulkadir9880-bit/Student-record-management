@@ -125,10 +125,18 @@ public class BinaryFileManager {
         }
     }
 
+    public static void displayAllStudents() {
+        ArrayList<Student> list = loadAllStudents();
 
+        if (list.size() == 0) {
+            System.out.println("No students found in binary file.");
+            return;
+        }
 
-
-
-
+        System.out.println("\n===== All Students (Binary File) =====");
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).displayStudent();
+        }
+    }
 
 }

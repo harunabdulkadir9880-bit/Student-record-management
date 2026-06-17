@@ -116,6 +116,19 @@ public class ObjectFileManager{
         }
     }
 
+    public static void displayAllStudents() {
+        ArrayList<Student> list = loadAllStudents();
+
+        if (list.size() == 0) {
+            System.out.println("No students found in object file.");
+            return;
+        }
+
+        System.out.println("\n===== All Students (Object File) =====");
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).displayStudent();
+        }
+    }
 
 
 }

@@ -46,6 +46,21 @@ public class ObjectFileManager{
         }
     }
 
+    public static void addStudent(Student newStudent) {
+        ArrayList<Student> list = loadAllStudents();
+
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).studentID.equals(newStudent.studentID)) {
+                System.out.println("A student with this ID already exists!");
+                return;
+            }
+        }
+
+        list.add(newStudent);
+        saveAllStudents(list);
+        System.out.println("Student added successfully (Object File).");
+    }
 
 
 }

@@ -105,6 +105,25 @@ public class BinaryFileManager {
             System.out.println("Student not found with ID: " + id);
         }
     }
+    public static void deleteStudent(String id) {
+        ArrayList<Student> list = loadAllStudents();
+        boolean found = false;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).studentID.equals(id)) {
+                list.remove(i);
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            saveAllStudents(list);
+            System.out.println("Student deleted successfully (Binary File).");
+        } else {
+            System.out.println("Student not found with ID: " + id);
+        }
+    }
 
 
 
